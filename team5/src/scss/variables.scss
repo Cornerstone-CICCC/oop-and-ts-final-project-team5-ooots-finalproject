@@ -1,0 +1,11 @@
+//light
+:root {
+    //header
+    --navbar-bkg: #fceacb;
+}
+
+//dark
+[data-bs-theme="dark"]{
+    //header
+    --navbar-bkg: black;
+}

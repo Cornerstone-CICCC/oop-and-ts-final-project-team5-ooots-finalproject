@@ -1,0 +1,9 @@
+:root {
+  --navbar-bkg: #fceacb;
+}
+
+[data-bs-theme=dark] {
+  --navbar-bkg: black;
+}
+
+/*# sourceMappingURL=variables.css.map */

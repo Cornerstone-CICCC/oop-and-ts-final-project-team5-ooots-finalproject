@@ -1,0 +1,52 @@
+//import variables.scss
+@use 'variables.scss';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+//header
+header{
+    .container {
+        img {
+            width: 15%;
+            max-width: 15%;
+            height: auto;
+        }
+        ul {
+            li {
+                i {
+                    margin-right: 10px;
+                }
+            }
+        }
+        form {
+            input {
+                .form-control-dark{
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+}
+
+
+.gradient-bkgr {
+    background: linear-gradient(190deg, #921118, #191919, #f8c4c7);
+    background-size: 180% 180%;
+    animation: gradient-animation 10s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
