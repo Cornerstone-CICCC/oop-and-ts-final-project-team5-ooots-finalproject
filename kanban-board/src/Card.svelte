@@ -13,7 +13,7 @@
 <style>
 .card {
 	height: 4em;
-	width: 100%;
+	width: 95%;
 	margin: 0.4em 0;
 	display: flex;
 	justify-content: center;
