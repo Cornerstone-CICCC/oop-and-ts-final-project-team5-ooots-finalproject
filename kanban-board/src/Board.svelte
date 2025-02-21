@@ -26,27 +26,37 @@
 	}
 </script>
 <style>
-    .board {
-        height: 90vh;
-        width: 100%;
-        padding: 0.5em;
-        margin-bottom: 40px;
-    }
-    .column {
-        height: 100%;
-        width: 250px;
-        padding: 0.5em;
-        margin: 1em;
-        float: left;
-        border: 1px solid #333333;
-				background-color: white;
-    }
+.board {
+    height: 90vh;
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 40px;
+}
+.column {
+    height: 100%;
+    width: 250px;
+    padding: 0.5em;
+    margin: 1em;
+    float: left;
+    border: 1px solid #333333;
+        background-color: white;
+}
 </style>
 
-<section class="board" use:dndzone={{items:columns, flipDurationMs, type:'column'}} on:consider={handleDndConsiderColumns} on:finalize={handleDndFinalizeColumns}>
+<section class="board" 
+    use:dndzone={{items:columns, flipDurationMs, type:'column'}} 
+    on:consider={handleDndConsiderColumns} 
+    on:finalize={handleDndFinalizeColumns}
+>
     {#each columns as {id, name,items}, idx (id)}
-  		<div class="column"animate:flip="{{duration: flipDurationMs}}" >    
-				<Column name={name} items={items} isDraggingFolder={isDraggingFolder} onFolderDragStart={() => (isDraggingFolder = true)} onDrop={(newItems) => handleItemFinalize(idx, newItems)} />
-			</div>
+  		<div class="column" animate:flip="{{duration: flipDurationMs}}" >    
+            <Column 
+                name={name} 
+                items={items} 
+                isDraggingFolder={isDraggingFolder} 
+                onFolderDragStart={() => (isDraggingFolder = true)} 
+                onDrop={(newItems) => handleItemFinalize(idx, newItems)} 
+            />
+        </div>
     {/each}
 </section>

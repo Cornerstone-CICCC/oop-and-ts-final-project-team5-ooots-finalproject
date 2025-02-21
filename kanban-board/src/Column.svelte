@@ -2,7 +2,6 @@
 	import { flip } from 'svelte/animate';
   	import { dndzone, TRIGGERS } from 'svelte-dnd-action';
 	import Card from "./Card.svelte";
-	import Folder from "./Folder.svelte";
 	
 	const flipDurationMs = 150;
 	
@@ -18,6 +17,7 @@
 		console.warn("got consider", name); 
 		if (trigger == TRIGGERS.DRAG_STARTED) {
 			const itemIdx = items.findIndex(item => item.id === id);
+			
 			console.log("index", itemIdx);
 			if(!!items[itemIdx].items) {
 				onFolderDragStart();
@@ -54,17 +54,14 @@
  	<div class="column-title">
 		{name}
 	</div>
-	<div class="column-content" use:dndzone={{items, flipDurationMs}}
-     	 on:consider={handleDndConsiderCards} 
-			on:finalize={handleDndFinalizeCards}
+	<div class="column-content" 
+		use:dndzone={{items, flipDurationMs}}
+		on:consider={handleDndConsiderCards} 
+		on:finalize={handleDndFinalizeCards}
 	>
 		{#each items as item (item.id)}
 			<div animate:flip="{{duration: flipDurationMs}}" >
-				{#if item.items != null}
-					<Folder folder={item} dropFromOthersDisabled={isDraggingFolder} />
-				{:else}
-					<Card name={item.name} />
-				{/if}
+				<Card name={item.name} />
 			</div>
 		{/each}
     </div>
