@@ -7,7 +7,7 @@
                 <div class="card-icons">
                     <h4>Wish List</h4>
                     <div class="buttons">
-                        <button class="icon-plus">
+                        <button class="icon-plus" id="open-task-form-btn">
                             <i class="fa-solid fa-plus"></i>
                         </button>
                         <button class="icon">
@@ -15,9 +15,21 @@
                         </button>
                     </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title">Title Example</h5>
-                    <p class="card-text">Notes go here</p>
+                <div class="card-body hidden" id="task-form">
+                    <form>
+                        <h5 class="card-title">
+                            <label for="title-input">Festival</label>
+                            <input type="text" id="title-input" required>
+                        </h5>
+                        <label for="date-input">Date</label>
+                        <input type="date" id="date-input" required>
+                        <div class="card-text">
+                            <label style="display: block;" for="description-input">Description</label>
+                            <textarea id="description-input" required></textarea>
+                            <button type="submit" id="add-or-update-task-btn">Add</button>
+                            <button type="button" id="close-task-form-btn">Close</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -61,3 +73,56 @@
         </div>
     </div>
 </div>
+
+<script>
+    const taskForm = document.getElementById("task-form");
+    const openTaskFormBtn = document.getElementById("open-task-form-btn");
+    const addOrUpdateTaskBtn = document.getElementById("add-or-update-task-btn");
+    const closeTaskFormBtn = document.getElementById("close-task-form-btn");
+    const titleInput = document.getElementById("title-input");
+    const dateInput = document.getElementById("date-input");
+    const descriptionInput = document.getElementById("description-input");
+    const tasksContainer = document.getElementById("tasks-container");
+
+    const taskData = JSON.parse(localStorage.getItem("data")) || [];
+    let currentTask = {};
+
+    //add/update event
+    const addOrUpdateTask = () => {
+        const dataArrIndex = taskData.findIndex((item) => item.id ===currentTask.id);
+        const taskObj = {
+            id: `${titleInput.value.toLowerCase().split(" ").join("-")}${Date.now()}`,
+            title: titleInput.value,
+            date: dateInput.value,
+            description: descriptionInput.value,
+        };
+
+        if (dataArrIndex === -1) {
+            taskData.unshift(taskObj);
+        } else {
+            taskData[dataArrIndex] = taskObj;
+        }
+
+        localStorage.setItem("data", JSON.stringify(taskData));
+
+        updateTaskContainer();
+        reset();
+
+        //
+        const updateTaskContainer = () => {
+  tasksContainer.innerHTML = "";
+
+  taskData.forEach(({ id, title, date, description }) => {
+    tasksContainer.innerHTML += `
+      <div class="task" id="${id}">
+        <p><strong>Title:</strong> ${title}</p>
+        <p><strong>Date:</strong> ${date}</p>
+        <p><strong>Description:</strong> ${description}</p>
+        <button onclick="editTask(this)" type="button" class="btn">Edit</button>
+        <button onclick="deleteTask(this)" type="button" class="btn">Delete</button>
+      </div>
+    `;
+  });
+};
+    }
+</script>
