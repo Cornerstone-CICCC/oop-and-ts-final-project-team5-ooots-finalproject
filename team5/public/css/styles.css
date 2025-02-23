@@ -6,28 +6,105 @@
   --navbar-bkg: black;
 }
 
+@media (max-width: 599px) {
+  .header .row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .header .row img.header-img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 30%;
+    height: auto;
+    padding-bottom: 5px;
+  }
+  .header .row form {
+    width: 100%;
+    max-width: 50%;
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .header .row form input {
+    font-size: 10px;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .header .row {
+    flex-direction: row;
+    align-items: center;
+  }
+  .header .row img.header-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .header .row form input {
+    font-size: 10px;
+  }
+}
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-header .container img {
-  width: 15%;
-  max-width: 15%;
+.header {
+  background-color: #f4845f;
+}
+.header .row img.header-img {
+  width: 100%;
+  max-width: 30%;
   height: auto;
 }
-header .container ul li i {
-  margin-right: 10px;
+.header .row form input {
+  background-color: black;
+  color: white;
 }
-header .container form input .form-control-dark {
-  margin-left: 20px;
+.header .row form input::placeholder {
+  background-color: black;
+  color: white;
+}
+
+.main .row {
+  background-color: #5b1f52;
+}
+.main .row .col-main {
+  padding: 10px;
+}
+.main .row .col-main .card {
+  background-color: white;
+  padding: 15px;
+}
+.main .row .col-main .card .card-icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+.main .row .col-main .card .card-icons h4 {
+  margin: 0;
+}
+.main .row .col-main .card .card-icons .buttons button {
+  width: 100%;
+  max-width: 10%;
+  padding: 5px;
+  margin-left: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+}
+.main .row .col-main .card .card-body {
+  background-color: whitesmoke;
+  border-radius: 20px;
 }
 
 .gradient-bkgr {
-  background: linear-gradient(190deg, #921118, #191919, #f8c4c7);
+  background: linear-gradient(20deg, #91467a, #e45449, #fdd0a1);
   background-size: 180% 180%;
-  animation: gradient-animation 10s ease infinite;
+  animation: gradient-animation 18s ease infinite;
 }
 
 @keyframes gradient-animation {

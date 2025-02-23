@@ -1,5 +1,6 @@
 //import variables.scss
 @use 'variables.scss';
+@use 'queries.scss';
 
 * {
     box-sizing: border-box;
@@ -8,35 +9,71 @@
 }
 
 //header
-header{
-    .container {
-        img {
-            width: 15%;
-            max-width: 15%;
+.header{
+    background-color: #f4845f;
+    .row {
+        img.header-img {
+            width: 100%;
+            max-width: 30%;
             height: auto;
         }
-        ul {
-            li {
-                i {
-                    margin-right: 10px;
-                }
+        form{
+            input{
+                background-color: black;
+                color: white;
+            }
+            input::placeholder{
+                background-color: black;
+                color: white;
             }
         }
-        form {
-            input {
-                .form-control-dark{
-                    margin-left: 20px;
+    }
+}
+
+//main
+.main{
+    .row{
+        background-color: #5b1f52;
+        .col-main{
+            padding: 10px;
+            .card{
+                background-color: white;
+                padding: 15px;
+                .card-icons{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 15px;
+                    h4{
+                        margin: 0;
+                    }
+                    .buttons{
+                        button{
+                            width: 100%;
+                            max-width: 10%;
+                            padding: 5px;
+                            margin-left: 10px;
+                            border-radius: 50%;
+                            background-color:transparent;
+                            border: none;
+                        }
+                    }
+                }
+                .card-body{
+                    background-color: whitesmoke;
+                    border-radius: 20px;
                 }
             }
         }
     }
 }
 
-
+//Background Effect
+//gradient background for Logo
 .gradient-bkgr {
-    background: linear-gradient(190deg, #921118, #191919, #f8c4c7);
+    background: linear-gradient(20deg, #91467a, #e45449, #fdd0a1);
     background-size: 180% 180%;
-    animation: gradient-animation 10s ease infinite;
+    animation: gradient-animation 18s ease infinite;
 }
 
 @keyframes gradient-animation {

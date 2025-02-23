@@ -1,3 +1,41 @@
-
+@media (max-width: 599px) {
+  .header .row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .header .row img.header-img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 30%;
+    height: auto;
+    padding-bottom: 5px;
+  }
+  .header .row form {
+    width: 100%;
+    max-width: 50%;
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+  .header .row form input {
+    font-size: 10px;
+  }
+}
+@media (min-width: 600px) and (max-width: 768px) {
+  .header .row {
+    flex-direction: row;
+    align-items: center;
+  }
+  .header .row img.header-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .header .row form input {
+    font-size: 10px;
+  }
+}
 
 /*# sourceMappingURL=queries.css.map */
