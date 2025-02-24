@@ -1,9 +1,13 @@
 <script>
-	import { flip } from 'svelte/animate';
     import { dndzone } from 'svelte-dnd-action';
 	import Column from "./Column.svelte";
     import Dialog from './Board/Dialog.svelte'
+    import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
 	
+    const isOpenDialog = writable(false);
+    setContext('isOpenDialog', isOpenDialog);
+
 	const flipDurationMs = 300;
 	
     export let columns;
@@ -57,7 +61,16 @@
         onSubmit={addColumn}
     />
     <section class="board" 
-        use:dndzone={{items:columns, flipDurationMs, type:'column'}} 
+        use:dndzone={{
+            items:columns, 
+            flipDurationMs, 
+            type:'column',
+            dragDisabled: $isOpenDialog,
+            dropTargetStyle: {
+                outline: '2px dashed yellow', 
+                borderRadius: '1rem',
+            },
+        }} 
         on:consider={handleDndConsiderColumns} 
         on:finalize={handleDndFinalizeColumns}
     >
@@ -109,14 +122,14 @@ main {
             justify-content: center;
             align-items: center;
             height: 2rem;
-            background-color: #F77F00;
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 5px 10px;
             border-radius: 5px;
 
             &:hover {
-                background-color: #DB7100;
+                background-color: var(--hover-primary-color);
             }
 
             @media (max-width: 768px){

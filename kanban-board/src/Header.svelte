@@ -28,6 +28,7 @@ header {
     .search-bar {
         background-color: black;
         color: white;
+        border-radius: 0.5rem;
 
         &::placeholder{
             background-color: black;

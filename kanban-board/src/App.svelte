@@ -3,7 +3,12 @@
 	import Board from "./Board.svelte";
     import Header from "./Header.svelte";
 	import Footer from './Footer.svelte';
-	
+	import { setContext } from 'svelte';
+    import { writable } from 'svelte/store';
+
+	const emptyColumnSectence = writable("Don't have any card yet");
+    setContext('emptyColumnSectence', emptyColumnSectence);
+
 	let searchText = "";
 
 	function handleBoardUpdated(newColumnsData) {
