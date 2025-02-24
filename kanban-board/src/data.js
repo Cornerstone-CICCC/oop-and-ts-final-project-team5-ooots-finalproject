@@ -42,3 +42,18 @@ export const data = writable([
 		}
 	]
 );
+
+export const members = [
+	{
+		name: 'majito',
+	},
+	{
+		name: 'Julio'
+	},
+	{
+		name: 'Phil'
+	},
+	{
+		name: 'Mizuki'
+	}
+]
