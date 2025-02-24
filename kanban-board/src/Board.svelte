@@ -8,9 +8,7 @@
     export let columns;
 	// will be called any time a card or a column gets dropped to update the parent data
 	export let onFinalUpdate;
-	
-	let isDraggingFolder = false;
- 
+	 
     function handleDndConsiderColumns(e) {
         columns = e.detail.items;
     }
@@ -22,7 +20,6 @@
  	function handleItemFinalize(columnIdx, newItems) {
 		columns[columnIdx].items = newItems;
 		onFinalUpdate([...columns]);
-		isDraggingFolder = false;
 	}
 </script>
 <style>
@@ -53,8 +50,6 @@
             <Column 
                 name={name} 
                 items={items} 
-                isDraggingFolder={isDraggingFolder} 
-                onFolderDragStart={() => (isDraggingFolder = true)} 
                 onDrop={(newItems) => handleItemFinalize(idx, newItems)} 
             />
         </div>

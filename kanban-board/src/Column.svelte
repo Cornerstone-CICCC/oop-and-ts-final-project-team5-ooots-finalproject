@@ -7,26 +7,13 @@
 	
 	export let name;
 	export let items;
-	export let onFolderDragStart;
 	export let onDrop;
-	export let isDraggingFolder;
 	
 	function handleDndConsiderCards(e) {
-		const { items: newItems, info: { id, trigger } } = e.detail;
-    	
-		console.warn("got consider", name); 
-		if (trigger == TRIGGERS.DRAG_STARTED) {
-			const itemIdx = items.findIndex(item => item.id === id);
-			
-			console.log("index", itemIdx);
-			if(!!items[itemIdx].items) {
-				onFolderDragStart();
-			}
-		}
+		const { items: newItems } = e.detail;
 		items = newItems;
   }
 	function handleDndFinalizeCards(e) {
-		isDraggingFolder = false
 		onDrop(e.detail.items);
 	}
 </script>
