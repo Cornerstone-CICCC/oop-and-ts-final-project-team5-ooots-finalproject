@@ -2,13 +2,17 @@
 	export let name;
 
 	function handlerClick() {
-		console.log(123);
+		const dialog = document.querySelector('#dialog-1');
+		dialog.show();
 	}
 </script>
 
 <div class="card" on:click={handlerClick}>
 	{name}
 </div>
+<dialog id="dialog-1">
+	<h1>Here is Dialog</h1>
+</dialog>
 
 <style>
 .card {
