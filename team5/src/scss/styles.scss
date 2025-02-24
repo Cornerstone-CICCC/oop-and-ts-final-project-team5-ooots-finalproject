@@ -30,42 +30,9 @@
     }
 }
 
-//main
+//main kanban block
 .main{
-    .row{
-        background-color: #5b1f52;
-        .col-main{
-            padding: 10px;
-            .card{
-                background-color: white;
-                padding: 15px;
-                .card-icons{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    padding: 15px;
-                    h4{
-                        margin: 0;
-                    }
-                    .buttons{
-                        button{
-                            width: 100%;
-                            max-width: 10%;
-                            padding: 5px;
-                            margin-left: 10px;
-                            border-radius: 50%;
-                            background-color:transparent;
-                            border: none;
-                        }
-                    }
-                }
-                .card-body{
-                    background-color: whitesmoke;
-                    border-radius: 20px;
-                }
-            }
-        }
-    }
+    background-color:lightgray;
 }
 
 //Background Effect

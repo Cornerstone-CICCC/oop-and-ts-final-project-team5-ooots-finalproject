@@ -1,128 +1,59 @@
 ---
+
 ---
+
 <div class="container main">
-    <div class="row align-items-start">
-        <div class="col col-main">
-            <div class="card">
-                <div class="card-icons">
-                    <h4>Wish List</h4>
-                    <div class="buttons">
-                        <button class="icon-plus" id="open-task-form-btn">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                        <button class="icon">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body hidden" id="task-form">
-                    <form>
-                        <h5 class="card-title">
-                            <label for="title-input">Festival</label>
-                            <input type="text" id="title-input" required>
-                        </h5>
-                        <label for="date-input">Date</label>
-                        <input type="date" id="date-input" required>
-                        <div class="card-text">
-                            <label style="display: block;" for="description-input">Description</label>
-                            <textarea id="description-input" required></textarea>
-                            <button type="submit" id="add-or-update-task-btn">Add</button>
-                            <button type="button" id="close-task-form-btn">Close</button>
-                        </div>
-                    </form>
-                </div>
+    <div class="kanban">
+        <!--Wish List Block -->
+        <div class="block" id="wish" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h4>Wish List</h4>
+            <div class="task-block">
+                <button id="task-button" onclick="newTask()">
+                    New Task
+                </button>
+            </div>
+            <!--Task1 -->
+            <div class="task" id="task1" draggable="true" ondragstart="drag(event)">
+                <h6>Task1</h6>
             </div>
         </div>
-        <div class="col col-main">
-            <div class="card">
-                <div class="card-icons">
-                    <h4>In Progress</h4>
-                    <div class="buttons">
-                        <button class="icon-plus">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                        <button class="icon">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Title Example</h5>
-                    <p class="card-text">Notes go here</p>
-                </div>
-            </div>
+
+        <!--In Progress Block -->
+        <div class="block" id="inprogress" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h4>In Progress</h4>
         </div>
-        <div class="col col-main">
-            <div class="card">
-                <div class="card-icons">
-                    <h4>Done</h4>
-                    <div class="buttons">
-                        <button class="icon-plus">
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
-                        <button class="icon">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Title Example</h5>
-                    <p class="card-text">Notes go here</p>
-                </div>
-            </div>
+
+        <!--Done -->
+        <div class="block" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h4>Done</h4>
+        </div>
+
+        <!--New Task Block -->
+        <div class="new-task-block" id="new-task-block">
+            <h5>New Task</h5>
+            <span class="form-row">
+                <label class="form-row-label" for="task-title">Title</label>
+                <input class="form-row-input" type="text" name="task-title" id="task-title">
+            </span>
+            <span class="form-row">
+                <label class="form-row-label" for="task-title">Description</label>
+                <textarea class="form-row-input" name="task-description" id="task-description" cols="70" rows="10"></textarea>
+            </span>
+            <span class="form-row">
+                <label class="form-row-label" for="task-title">Status</label>
+                <select class="form-row-input" name="task-status" id="task-status">
+                    <!--Options -->
+                    <option value="wish">Wish List</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+            </span>
+
+            <span class="form-row-buttons">
+                <button id="edit-button" onclick="editTask()">Edit</button>
+                <button id="save-button" onclick="saveTask()">Save</button>
+                <button id="cancel-button" onclick="cancelTask()">Cancel</span>
+            </span>
         </div>
     </div>
 </div>
-
-<script>
-    const taskForm = document.getElementById("task-form");
-    const openTaskFormBtn = document.getElementById("open-task-form-btn");
-    const addOrUpdateTaskBtn = document.getElementById("add-or-update-task-btn");
-    const closeTaskFormBtn = document.getElementById("close-task-form-btn");
-    const titleInput = document.getElementById("title-input");
-    const dateInput = document.getElementById("date-input");
-    const descriptionInput = document.getElementById("description-input");
-    const tasksContainer = document.getElementById("tasks-container");
-
-    const taskData = JSON.parse(localStorage.getItem("data")) || [];
-    let currentTask = {};
-
-    //add/update event
-    const addOrUpdateTask = () => {
-        const dataArrIndex = taskData.findIndex((item) => item.id ===currentTask.id);
-        const taskObj = {
-            id: `${titleInput.value.toLowerCase().split(" ").join("-")}${Date.now()}`,
-            title: titleInput.value,
-            date: dateInput.value,
-            description: descriptionInput.value,
-        };
-
-        if (dataArrIndex === -1) {
-            taskData.unshift(taskObj);
-        } else {
-            taskData[dataArrIndex] = taskObj;
-        }
-
-        localStorage.setItem("data", JSON.stringify(taskData));
-
-        updateTaskContainer();
-        reset();
-
-        //
-        const updateTaskContainer = () => {
-  tasksContainer.innerHTML = "";
-
-  taskData.forEach(({ id, title, date, description }) => {
-    tasksContainer.innerHTML += `
-      <div class="task" id="${id}">
-        <p><strong>Title:</strong> ${title}</p>
-        <p><strong>Date:</strong> ${date}</p>
-        <p><strong>Description:</strong> ${description}</p>
-        <button onclick="editTask(this)" type="button" class="btn">Edit</button>
-        <button onclick="deleteTask(this)" type="button" class="btn">Delete</button>
-      </div>
-    `;
-  });
-};
-    }
-</script>
