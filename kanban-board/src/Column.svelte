@@ -1,6 +1,6 @@
 <script>
 	import { flip } from 'svelte/animate';
-  	import { dndzone, TRIGGERS } from 'svelte-dnd-action';
+  	import { dndzone } from 'svelte-dnd-action';
 	import Card from "./Card.svelte";
 	
 	const flipDurationMs = 150;
