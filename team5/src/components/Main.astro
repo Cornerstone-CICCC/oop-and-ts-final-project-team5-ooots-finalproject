@@ -1,58 +1,57 @@
 ---
 
 ---
-
-<div class="container main">
-    <div class="kanban">
-        <!--Wish List Block -->
+<div class="container kanban">
+    <!--Heading -->
+    <div class="kanban-heading">
+        <h3 class="title">Welcome</h3>
+    </div>
+    <!--board -->
+    <div class="board">
         <div class="block" id="wish" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h4>Wish List</h4>
-            <div class="task-block">
-                <button id="task-button" onclick="newTask()">
-                    New Task
-                </button>
+            <div class="button-block">
+                <button id="btn-block" onclick="createTask()">New Event</button>
             </div>
-            <!--Task1 -->
+            <!--Task 1 -->
             <div class="task" id="task1" draggable="true" ondragstart="drag(event)">
-                <h6>Task1</h6>
+                <h5>Event 1</h5>
             </div>
         </div>
-
-        <!--In Progress Block -->
+        <!--In progress -->
         <div class="block" id="inprogress" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h4>In Progress</h4>
         </div>
-
         <!--Done -->
         <div class="block" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h4>Done</h4>
         </div>
-
-        <!--New Task Block -->
-        <div class="new-task-block" id="new-task-block">
-            <h5>New Task</h5>
+        <!--New task -->
+        <div class="new-task-block" id="new-task">
+            <h6>New Event</h6>
             <span class="form-row">
-                <label class="form-row-label" for="task-title">Title</label>
-                <input class="form-row-input" type="text" name="task-title" id="task-title">
+                <label class="form-row-label" for="form-row-name">Event Name</label>
+                <input class="form-row-input" type="text" name="form-row-name" id="form-row-name">
             </span>
             <span class="form-row">
-                <label class="form-row-label" for="task-title">Description</label>
-                <textarea class="form-row-input" name="task-description" id="task-description" cols="70" rows="10"></textarea>
+                <label class="form-row-label" for="form-row-name">Description</label>
+                <textarea class="form-row-input" name="description" id="description" cols="70" rows="10"></textarea>
             </span>
             <span class="form-row">
-                <label class="form-row-label" for="task-title">Status</label>
-                <select class="form-row-input" name="task-status" id="task-status">
+                <label class="form-row-label" for="form-row-name">Status</label>
+                <!--Select Menu -->
+                <select class="form-row-input" name="status" id="status">
                     <!--Options -->
-                    <option value="wish">Wish List</option>
+                    <option value="wish">Wish</option>
                     <option value="inprogress">In Progress</option>
                     <option value="done">Done</option>
                 </select>
             </span>
-
+            <!--Buttons -->
             <span class="form-row-buttons">
-                <button id="edit-button" onclick="editTask()">Edit</button>
-                <button id="save-button" onclick="saveTask()">Save</button>
-                <button id="cancel-button" onclick="cancelTask()">Cancel</span>
+                <button id="edit-btn" onclick="editTask()">Edit</button>
+                <button id="save-btn" onclick="saveTask()">Save</button>
+                <button id="cancel-btn" onclick="createTask()">Cancel</button>
             </span>
         </div>
     </div>

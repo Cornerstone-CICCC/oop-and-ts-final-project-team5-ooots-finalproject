@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Playwrite+IT+Moderna:wght@100..400&display=swap");
 :root {
   --navbar-bkg: #fceacb;
 }
@@ -68,8 +69,137 @@
   color: white;
 }
 
-.main {
-  background-color: lightgray;
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.kanban {
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+}
+.kanban .kanban-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.kanban .kanban-heading .title {
+  font-size: 2.5rem;
+  padding: 0.8rem 1.7rem;
+  border-radius: 0.5rem;
+  margin: 1rem;
+  font-family: "Cedarville Cursive", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.kanban .board {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: sans-serif;
+}
+.kanban .board .block {
+  flex: 1;
+  margin: 0 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.kanban .board .block h4, .kanban .board .block h5, .kanban .board .block h6 {
+  margin-top: 0;
+}
+.kanban .board .block, .kanban .board .new-task-block {
+  padding: 0.6rem;
+  margin: 0.6rem;
+  width: 30.5%;
+  min-width: 14rem;
+  min-height: 4.5rem;
+  border-radius: 0.3rem;
+}
+.kanban .board .block #btn-block, .kanban .board .new-task-block #btn-block {
+  margin: 0.2rem 0rem 0.1rem 0rem;
+  background-color: white;
+  border-radius: 0.2rem;
+  width: 100%;
+  border: 0.25rem solid black;
+  padding: 0.5rem 2.7rem;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+}
+.kanban .board .block .task, .kanban .board .new-task-block .task {
+  background-color: white;
+  margin: 0.2rem 0rem 0.3rem 0rem;
+  border: 0.1rem solid black;
+  border-radius: 0.2rem;
+  padding: 0.5rem 0.2rem 0.5rem 2rem;
+}
+.kanban .board .new-task-block {
+  display: none;
+  background: #ffaf00;
+  width: 64.4%;
+  flex-direction: column;
+}
+.kanban .board .new-task-block .form-row {
+  display: flex;
+  flex-direction: row;
+  margin: 0.2rem;
+  margin-bottom: 10px;
+}
+.kanban .board .new-task-block .form-row .form-row-label {
+  width: 15%;
+  padding: 0.2rem;
+  padding-right: 0.5rem;
+  border: 0.1rem solid black;
+  border-right: 0;
+  border-radius: 0.2rem 0rem 0rem 0.2rem;
+}
+.kanban .board .new-task-block .form-row .form-row-input {
+  border: 0.1rem solid black;
+  border-radius: 0rem 0.2rem 0.2rem 0rem;
+  width: 85%;
+}
+.kanban .board .new-task-block .form-row textarea {
+  resize: none;
+}
+.kanban .board .new-task-block .form-row-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0.2rem;
+}
+.kanban .board .new-task-block .form-row-buttons #edit-btn,
+.kanban .board .new-task-block .form-row-buttons #save-btn,
+.kanban .board .new-task-block .form-row-buttons #cancel-btn {
+  margin: 0.2rem 0rem 0.1rem 0rem;
+  background-color: white;
+  border-radius: 0.2rem;
+  width: 49.2%;
+  border: 0.25rem solid black;
+  padding: 0.5rem 2.7rem;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+}
+.kanban .board .new-task-block .form-row-buttons #edit-btn {
+  display: none;
+}
+.kanban #wish {
+  background-color: #e45449;
+  color: black;
+}
+.kanban #inprogress {
+  background-color: #fdd0a1;
+  color: black;
+}
+.kanban #done {
+  background-color: antiquewhite;
+  color: black;
 }
 
 .gradient-bkgr {
