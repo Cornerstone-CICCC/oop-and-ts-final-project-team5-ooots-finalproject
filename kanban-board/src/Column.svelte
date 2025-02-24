@@ -118,7 +118,7 @@
 			<h3>Add a new card</h3>
 			<input class="input" bind:value={newCardName} placeholder="Enter card name" />
 			<div class="modal-buttons">
-				<button on:click={() => (showModal = false)}>Cancel</button>
+				<button on:click={() => {showModal = false; newCardName = '';}}>Cancel</button>
 				<button on:click={addCard}>Confirm</button>
 			</div>
 		</div>
