@@ -3,12 +3,14 @@
 @use 'queries.scss';
 
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Playwrite+IT+Moderna:wght@100..400&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 
 //header
 .header{
@@ -40,6 +42,7 @@
     .kanban{
         width: 100%;
         max-width: 100%;
+        height: 80vh;
         margin: auto;
         display: flex;
         flex-direction: column;
@@ -74,6 +77,8 @@
                 box-sizing: border-box;
                 h4, h5, h6{
                     margin-top: 0;
+                    font-family: "Montserrat", serif;
+                    font-weight: 400;
                 }
             }
             .block, .new-task-block{
@@ -165,8 +170,23 @@
         }
 }
 
-
-
+//Footer
+.footer{
+    background-color: #ccc;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 100%;
+    .footer-text{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Roboto", serif;
+        font-size: 1rem;
+        padding: 0.4rem;
+    }
+}
 
 //Background Effect
 //gradient background for Logo
