@@ -1,20 +1,13 @@
 <script>
-    export let columns
-    export let onFinalUpdate;
-    
+    export let title;
+    export let placeholder;
+    export let onSubmit;
+
     let inputText = '';
     let dialogRef;
 
     function submitForm() {
-        const lastColumn = columns[columns.length - 1];
-
-        columns = [...columns, {
-            id: lastColumn,
-            name: inputText,
-            items: []
-        }];
-
-        onFinalUpdate([...columns]);
+        onSubmit(inputText);
         closeDialog();
     }
 
@@ -28,15 +21,15 @@
     }
 </script>
 <dialog bind:this={dialogRef}>
-    <h2>Create New Column</h2>
-    <input id="column_name_input" type="text" bind:value={inputText} placeholder="Input Column Name..."/>
+    <h2>{title}</h2>
+    <input id="input_text" type="text" bind:value={inputText} placeholder={placeholder}/>
     <div class="btn_area">
         <button on:click={closeDialog}>Cancel</button>
         <button on:click={submitForm}>Confirm</button>
     </div>
 </dialog>
 <style>
-    dialog {
+dialog {
     border: none;
     border-radius: 8px;
     padding: 1.5rem 1.5rem 1rem 1.5rem;
@@ -47,7 +40,7 @@
     transform: translate(-50%, -50%);
 }
 
-#column_name_input {
+#input_text {
     margin: 1rem 0 1rem 0;
     width: 100%;
 }
