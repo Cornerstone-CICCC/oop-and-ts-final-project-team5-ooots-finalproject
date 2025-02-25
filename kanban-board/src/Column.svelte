@@ -1,6 +1,6 @@
 <script>
 	import { flip } from 'svelte/animate';
-  	import { dndzone, TRIGGERS } from 'svelte-dnd-action';
+  	import { dndzone } from 'svelte-dnd-action';
 	import Card from "./Card.svelte";
 	import Dialog from './Board/Dialog.svelte'
 	
@@ -13,14 +13,14 @@
 	let dialogRef;
 	
 	function handleDndConsiderCards(e) {
-		const { items: newItems } = e.detail;
-		items = newItems;
+		const { items: newItems } = e.detail;		
+		items = [...newItems];
   	}
 
 	function handleDndFinalizeCards(e) {
-		console.log("drop", e.detail.items)
-		onDrop(e.detail.items);
+		onDrop([...e.detail.items]);
 	}
+	
 	function addCard(inputText) {
 		if (!inputText.trim()) return;
 		const newCard = {id: Date.now(), name: inputText};

@@ -8,7 +8,6 @@
 	
     export let columns;
 
-	// will be called any time a card or a column gets dropped to update the parent data
 	export let onFinalUpdate;
 	
     let dialogRef;
@@ -63,7 +62,7 @@
         on:finalize={handleDndFinalizeColumns}
     >
         {#each columns as {id, name,items}, idx (id)}
-            <div class="column" animate:flip="{{duration: flipDurationMs}}" >    
+            <div class="column"  >    
                 <Column 
                     name={name} 
                     items={items} 
