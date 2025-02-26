@@ -75,7 +75,7 @@ main {
     display: flex;
     flex-direction: column;
     flex: 1;
-    margin: 1rem 2rem;
+    margin: 0.5rem 2rem;
 
     .status_bar {
         display: flex;
