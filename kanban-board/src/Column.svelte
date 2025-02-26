@@ -9,6 +9,7 @@
 	export let name;
 	export let items;
 	export let onDrop;
+	export let searchText = "";
 
 	let dialogRef;
 	
@@ -28,6 +29,10 @@
 		onDrop(items);
 		inputText = '';
 	}
+
+	$: filteredItems = searchText.trim() === "" 
+		? items
+		: items.filter(item => item.name.toLowerCase().includes(searchText.toLowerCase()));
 </script>
 <div class='column'>
  	<div class="column-title">
@@ -39,7 +44,7 @@
 		on:consider={handleDndConsiderCards} 
 		on:finalize={handleDndFinalizeCards}
 	>
-		{#each items as item (item.id)}
+		{#each filteredItems as item (item.id)}
 			<div class="drag-area" animate:flip="{{duration: flipDurationMs}}" >
 				<Card name={item.name} />
 			</div>

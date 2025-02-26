@@ -1,9 +1,11 @@
 <script>
 
+  export let searchText = "";
+
 </script>
 <header>
     <img class="logo" src="/logo.png" alt="chilling vancouver logo">
-    <input type="search" class="search-bar" placeholder="Search your event..." aria-label="Search">    
+    <input type="search" class="search-bar" bind:value={searchText} placeholder="Search your event..." aria-label="Search" />
 </header>
 <style lang="scss">
 header {

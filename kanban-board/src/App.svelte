@@ -4,6 +4,8 @@
     import Header from "./Header.svelte";
 	import Footer from './Footer.svelte';
 	
+	let searchText = "";
+
 	function handleBoardUpdated(newColumnsData) {
 		$data = newColumnsData;
 	}
@@ -21,8 +23,8 @@
 	}
 </style>
 <div class="container">
-	<Header />
-	<Board columns={$data} onFinalUpdate={handleBoardUpdated}/>
+	<Header bind:searchText />
+	<Board columns={$data} onFinalUpdate={handleBoardUpdated} searchText={searchText}/>
 	<Footer />
 </div>
 
