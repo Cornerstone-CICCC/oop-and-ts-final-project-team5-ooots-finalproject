@@ -54,6 +54,9 @@
 />
 <style lang="scss">
 	.column {
+		height: 40rem;
+		width: 100%;
+        overflow-y: hidden;
         min-width: 250px;
         width: 3rem;
         padding: 0.5em;
@@ -61,7 +64,6 @@
         float: left;
         border: 1px solid #333333;
         background-color: white;
-		overflow-y: hidden;
 
 		.column-title {
 			height: 2.5em;
