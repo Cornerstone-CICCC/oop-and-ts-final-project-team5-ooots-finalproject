@@ -7,8 +7,8 @@
 	const flipDurationMs = 300;
 	
     export let columns;
-
 	export let onFinalUpdate;
+    export let searchText = "";
 	
     let dialogRef;
  
@@ -66,6 +66,7 @@
                 name={name} 
                 items={items} 
                 onDrop={(newItems) => handleItemFinalize(idx, newItems)} 
+                searchText={searchText}
             />
         {/each}
     </section>
