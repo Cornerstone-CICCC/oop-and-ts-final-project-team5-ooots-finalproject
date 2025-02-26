@@ -10,7 +10,7 @@
 	{name}
 </div>
 
-<style>
+<style lang="scss">
 .card {
 	height: 4em;
 	width: 95%;
@@ -18,7 +18,12 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #dddddd;
+	background-color: white;
 	border: 1px solid #333333;
+	border-radius: .5rem;
+
+	&:hover {
+		background-color: whitesmoke;
+	}
 }
 </style>
