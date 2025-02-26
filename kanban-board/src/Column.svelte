@@ -1,6 +1,6 @@
 <script>
 	import { flip } from 'svelte/animate';
-  	import { dndzone, TRIGGERS } from 'svelte-dnd-action';
+  	import { dndzone } from 'svelte-dnd-action';
 	import Card from "./Card.svelte";
 	import Dialog from './Board/Dialog.svelte'
 	
@@ -13,53 +13,22 @@
 	let dialogRef;
 	
 	function handleDndConsiderCards(e) {
-		const { items: newItems } = e.detail;
-		items = newItems;
-    }
+		const { items: newItems } = e.detail;		
+		items = [...newItems];
+  	}
+
 	function handleDndFinalizeCards(e) {
-		console.log("drop", e.detail.items)
-		onDrop(e.detail.items);
+		onDrop([...e.detail.items]);
 	}
+	
 	function addCard(inputText) {
 		if (!inputText.trim()) return;
 		const newCard = {id: Date.now(), name: inputText};
-		items = [...items, newCard];
+		items = [newCard, ...items];
 		onDrop(items);
 		inputText = '';
 	}
 </script>
-<style>
-	.column {
-		height: 100%;
-		width: 100%;
-		/*Notice we make sure this container doesn't scroll so that the title stays on top and the dndzone inside is scrollable*/
-        overflow-y: hidden;
-	}
-	.column-content {
-        height: calc(100% - 2.5em);
-        /* Notice that the scroll container needs to be the dndzone if you want dragging near the edge to trigger scrolling */
-        overflow-y: scroll;
-    }
-    .column-title {
-		height: 2.5em;
-		font-weight: bold;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-	.add-card-btn {
-		background-color: #007bff;
-		color: white;
-		border: none;
-		padding: 5px 10px;
-		border-radius: 5px;
-		cursor: pointer;
-		font-size: 0.8em;
-	}
-	.add-card-btn:hover {
-		background-color: #0056b3;
-	}
-</style>
 <div class='column'>
  	<div class="column-title">
 		{name}
@@ -71,7 +40,7 @@
 		on:finalize={handleDndFinalizeCards}
 	>
 		{#each items as item (item.id)}
-			<div animate:flip="{{duration: flipDurationMs}}" >
+			<div class="drag-area" animate:flip="{{duration: flipDurationMs}}" >
 				<Card name={item.name} />
 			</div>
 		{/each}
@@ -83,3 +52,50 @@
     placeholder="Input Card Name..."
     onSubmit={addCard}
 />
+<style lang="scss">
+	.column {
+        min-width: 250px;
+        width: 3rem;
+        padding: 0.5em;
+        margin: 1rem;
+        float: left;
+        border: 1px solid #333333;
+        background-color: white;
+		overflow-y: hidden;
+
+		.column-title {
+			height: 2.5em;
+			font-weight: bold;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding-left: .5rem;
+			padding-right: .5rem;
+
+			.add-card-btn {
+				background-color: #007bff;
+				color: white;
+				border: none;
+				padding: 5px 10px;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: 0.8em;
+
+				&:hover {
+					background-color: #0056b3;
+				}
+			}
+		}
+
+		.column-content {
+			height: calc(100% - 2.5em);
+			/* Notice that the scroll container needs to be the dndzone if you want dragging near the edge to trigger scrolling */
+			overflow-y: scroll;
+
+			.drag-area {
+				display: flex;
+				justify-content: center;;
+			}
+		}
+	}
+</style>

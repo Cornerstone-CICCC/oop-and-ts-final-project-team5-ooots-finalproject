@@ -28,7 +28,7 @@
         <button on:click={submitForm}>Confirm</button>
     </div>
 </dialog>
-<style>
+<style lang="scss">
 dialog {
     border: none;
     border-radius: 8px;
@@ -38,6 +38,11 @@ dialog {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    margin: 0 !important;
+
+    h2 {
+        margin: 0;
+    }
 }
 
 #input_text {
