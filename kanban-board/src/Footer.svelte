@@ -12,7 +12,8 @@ footer {
         text-align: center;
         font-family: "Roboto", serif;
         font-size: 1rem;
-        padding: 0.4rem;
+        margin: 0;
+        padding: 1rem;
     }
 }
 </style>

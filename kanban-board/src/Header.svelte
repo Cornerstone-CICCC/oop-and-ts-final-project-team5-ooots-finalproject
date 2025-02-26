@@ -14,7 +14,8 @@ header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem 2rem .5rem 2rem;
+    margin: 0;
+    padding: .5rem 2rem;
 
     .logo {
         width: 100%;

@@ -54,10 +54,14 @@
 />
 <style lang="scss">
 	.column {
-		height: 100%;
-		width: 100%;
-		/*Notice we make sure this container doesn't scroll so that the title stays on top and the dndzone inside is scrollable*/
-        overflow-y: hidden;
+        min-width: 250px;
+        width: 3rem;
+        padding: 0.5em;
+        margin: 1rem;
+        float: left;
+        border: 1px solid #333333;
+        background-color: white;
+		overflow-y: hidden;
 
 		.column-title {
 			height: 2.5em;

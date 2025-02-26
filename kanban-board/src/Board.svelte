@@ -62,13 +62,11 @@
         on:finalize={handleDndFinalizeColumns}
     >
         {#each columns as {id, name,items}, idx (id)}
-            <div class="column"  >    
-                <Column 
-                    name={name} 
-                    items={items} 
-                    onDrop={(newItems) => handleItemFinalize(idx, newItems)} 
-                />
-            </div>
+            <Column 
+                name={name} 
+                items={items} 
+                onDrop={(newItems) => handleItemFinalize(idx, newItems)} 
+            />
         {/each}
     </section>
 </main>
@@ -77,66 +75,54 @@ main {
     display: flex;
     flex-direction: column;
     flex: 1;
-}
-.board {
-    /* height: 70vh; */
-    width: 100%;
-    height: 70vh;
-    margin-bottom: 0;
-    overflow-x: scroll;
-    display: flex;
-    background-color: black;
-    flex: 1;
+    margin: 1rem 2rem;
 
-    .column {
-        height: 30rem ;// calc(100% - 2.5em);
-        min-width: 250px;
-        width: 250px;
-        padding: 0.5em;
-        margin: 0 1rem 1rem 1rem;
-        float: left;
-        border: 1px solid #333333;
-        background-color: white;
-    }
-}
-
-.status_bar {
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    background-color: black;
-    padding: 0.5rem 1rem 0.5rem 1rem;
-    position: relative;
-    
-    .kanban-heading {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 0);
-
-        h3 {
-            color: white;
-            font-size: 2.5rem;
-            line-height: 2rem;
-            font-family: "Cedarville Cursive", serif;
-            font-weight: 400;
-            font-style: normal;
-            margin: 0.5rem auto 0.5rem auto;
-        }
-    }
-
-    #add_column {
-        cursor: pointer;
+    .status_bar {
         display: flex;
-        justify-content: center;
+        justify-content: end;
         align-items: center;
-        height: 2rem;
+        padding: 0.5rem 0;
+        position: relative;
 
-        @media (max-width: 768px){
-            .btn-title {
-                display: none;
+        .kanban-heading {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+
+            h3 {
+                color: white;
+                font-size: 2.5rem;
+                line-height: 2rem;
+                font-family: "Cedarville Cursive", serif;
+                font-weight: 400;
+                font-style: normal;
+                margin: 0.5rem auto 0.5rem auto;
             }
         }
+        #add_column {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 2rem;
+
+            @media (max-width: 768px){
+                .btn-title {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    .board {
+        /* height: 70vh; */
+        width: 100%;
+        height: 70vh;
+        margin-bottom: 0;
+        overflow-x: scroll;
+        display: flex;
+        flex: 1;
     }
 }
 </style>
