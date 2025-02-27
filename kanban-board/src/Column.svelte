@@ -138,8 +138,11 @@
 		padding: 0.5em;
 		margin: 1rem;
 		float: left;
-		border: 1px solid #333333;
 		border-radius: 0.5rem;
+		background-color: rgba(0,0,0,0.2) !important;
+		box-shadow:
+			0 2px 4px rgba(0,0,0,0.2),
+			0 8px 16px rgba(0,0,0,0.4);
 
 		.column-title {
 			height: 2.5em;
@@ -149,6 +152,7 @@
 			align-items: center;
 			padding-left: .5rem;
 			padding-right: .5rem;
+			color: white;
 
 			.add-card-btn {
 				background-color: var(--primary-color);
@@ -167,11 +171,11 @@
 
 		.column-content {
 			height: calc(100% - 2.5em);
-			/* Notice that the scroll container needs to be the dndzone if you want dragging near the edge to trigger scrolling */
 			overflow-y: scroll;
 
 			.empty-column {
 				text-align: center;
+				color: white;
 			}
 
 			.drag-area {
