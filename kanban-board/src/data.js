@@ -2,8 +2,8 @@ import { writable } from "svelte/store";
 
 export const data = writable([
 		{
-			id: 1,
-			name: "TODO",
+			id: "T1",
+			name: "Todo",
 			items: [
 				{id: 1, tags: ["March"], name: "St. Patrick’s Day", desc: "an Irish holiday that’s celebrated throughout the week at various venues around town", date: "17/03/2025", state: 0, },
 				{id: 2, tags: ["March"],  name: "Vancouver Chocolate Run", desc: "A running event hosted by Try Events at Stanley Park.", date: "01/03/2025,", state: 0},
@@ -15,29 +15,29 @@ export const data = writable([
 			]
 		},
 		{
-			id: 2,
+			id: "I1",
 			name: "In Progress",
 			items: [
-				{id: 8, tag:["April"], name: "Big Easter Run", desc: "happens at Jericho Beach in Vancouver. The event is fun and open to all ages with 1K to 10K runs.", date: "19/04/2025", state: 0},
-				{id: 9, tag:["April"], name: "Party for the Planet", desc: "Largest Earth Day event. It’s free and takes place on a Saturday in April outside Surrey City Hall.", date: "26/04/2025", state: 0 },
-				{id: 10, tag:["April"], name: "Food Truck Fest", desc: "Event hosted by the Greater Vancouver Food Truck Festival with 20+ food trucks, live music and artisan vendors at UBC", date: "03/04/2025", state: 0, comment: "Till April 4th" },
-				{id: 11, tag:["April"], name: "Brewhalla", desc: "Festival hosts a beer-themed event in North Vancouver. It’s at the Shipyards and features craft beer, food vendors, live music and more.", date: "11/04/2025", state: 0 },
-				{id: 12, tag:["April"], name: "Food Truck Wars", desc: "A major food truck festival with live music, a beer garden and artisan vendors at the Cloverdale Fairgrounds in Surrey.", date: "11/04/2025", state: 0, comment: "Till April 13th" },
-				{id: 13, tag:["April"], name: "Art Vancouver", desc: "Contemporary art fair featuring international artwork, panelists, classes and more at the Vancouver Convention Centre in the spring each year.", date: "24/04/2025", state: 0, comment: "Till April 27th" },
-				{id: 14, tag:["April"], name: "Abbotsford Tulip Festival ", desc: "The Abbotsford Tulip Festival is a massive flower show that features 35 acres of fields, including 28 for tulips.", date: "06/04/2025", state: 0, comment: "Till may 5th"},
+				{id: 8, tags:["April"], name: "Big Easter Run", desc: "happens at Jericho Beach in Vancouver. The event is fun and open to all ages with 1K to 10K runs.", date: "19/04/2025", state: 0},
+				{id: 9, tags:["April"], name: "Party for the Planet", desc: "Largest Earth Day event. It’s free and takes place on a Saturday in April outside Surrey City Hall.", date: "26/04/2025", state: 0 },
+				{id: 10, tags:["April"], name: "Food Truck Fest", desc: "Event hosted by the Greater Vancouver Food Truck Festival with 20+ food trucks, live music and artisan vendors at UBC", date: "03/04/2025", state: 0, comment: "Till April 4th" },
+				{id: 11, tags:["April"], name: "Brewhalla", desc: "Festival hosts a beer-themed event in North Vancouver. It’s at the Shipyards and features craft beer, food vendors, live music and more.", date: "11/04/2025", state: 0 },
+				{id: 12, tags:["April"], name: "Food Truck Wars", desc: "A major food truck festival with live music, a beer garden and artisan vendors at the Cloverdale Fairgrounds in Surrey.", date: "11/04/2025", state: 0, comment: "Till April 13th" },
+				{id: 13, tags:["April"], name: "Art Vancouver", desc: "Contemporary art fair featuring international artwork, panelists, classes and more at the Vancouver Convention Centre in the spring each year.", date: "24/04/2025", state: 0, comment: "Till April 27th" },
+				{id: 14, tags:["April"], name: "Abbotsford Tulip Festival ", desc: "The Abbotsford Tulip Festival is a massive flower show that features 35 acres of fields, including 28 for tulips.", date: "06/04/2025", state: 0, comment: "Till may 5th"},
 			]
 		},
 		{
-			id: 3,
+			id: "D1",
 			name: "Done",
 			items: [
-				{id: 15, tag:["May"], name: "Big Jungle Run", desc: " A family-friendly running event around Burnaby Lake.", date: "31/05/2025", state: 0 },
-				{id: 16, tag:["May"], name: " The Search for the Perfect Pint ", desc: "A fundraising event hosted by the Rotary Club of Port Moody, Search for the Perfect Pint is a beer-tasting event that showcases craft breweries and local food.", date: "02/05/2025", state: 0 },
-				{id: 17, tag:["May"], name: "Hong Kong Fair", desc: "A cultural celebration with exhibitions, games, market vendors and more in North Vancouver.", date: "05/05/2025", state: 0, comment: "The date is not confirmed yet, could change." },
-				{id: 18, tag:["May"], name: "Royal Canadian International Circus", desc: "The Royal Canadian Circus is in Metro Vancouver in May with acrobats, aerialists, motorcycle stunts and other great acts in Richmond and Surrey.", date: "08/05/2025", state: 0, comment: "Till May 19th" },
-				{id: 19, tag:["May"], name: "Vancouver Comic Arts Festival", desc: "A comic-themed trade show with workshops, presentations, games and other activities at Vancouver’s Roundhouse Community Centre.", date: "17/05/2025", state: 0, comment: "Till May 19th" },
-				{id: 20, tag:["May"], name: "Victoria Day", desc: "Celebrated in Metro Vancouver with a parade, car show and other events, Victoria Day is a stat holiday that takes place on a Monday in May.", date: "16/05/2025", state: 0, comment: "Till May 19th" },
-				{id: 21, tag:["May"], name: "Mother’s Day Powwow ", desc: "Traditional dancers, drummers and market vendors at Vancouver’s Trout Lake Community Centre over the Mother’s Day weekend. Admission is free and everyone is welcome.", date: "10/05/2025", date: "", state: 0 },
+				{id: 15, tags:["May"], name: "Big Jungle Run", desc: " A family-friendly running event around Burnaby Lake.", date: "31/05/2025", state: 0 },
+				{id: 16, tags:["May"], name: " The Search for the Perfect Pint ", desc: "A fundraising event hosted by the Rotary Club of Port Moody, Search for the Perfect Pint is a beer-tasting event that showcases craft breweries and local food.", date: "02/05/2025", state: 0 },
+				{id: 17, tags:["May"], name: "Hong Kong Fair", desc: "A cultural celebration with exhibitions, games, market vendors and more in North Vancouver.", date: "05/05/2025", state: 0, comment: "The date is not confirmed yet, could change." },
+				{id: 18, tags:["May"], name: "Royal Canadian International Circus", desc: "The Royal Canadian Circus is in Metro Vancouver in May with acrobats, aerialists, motorcycle stunts and other great acts in Richmond and Surrey.", date: "08/05/2025", state: 0, comment: "Till May 19th" },
+				{id: 19, tags:["May"], name: "Vancouver Comic Arts Festival", desc: "A comic-themed trade show with workshops, presentations, games and other activities at Vancouver’s Roundhouse Community Centre.", date: "17/05/2025", state: 0, comment: "Till May 19th" },
+				{id: 20, tags:["May"], name: "Victoria Day", desc: "Celebrated in Metro Vancouver with a parade, car show and other events, Victoria Day is a stat holiday that takes place on a Monday in May.", date: "16/05/2025", state: 0, comment: "Till May 19th" },
+				{id: 21, tags:["May"], name: "Mother’s Day Powwow ", desc: "Traditional dancers, drummers and market vendors at Vancouver’s Trout Lake Community Centre over the Mother’s Day weekend. Admission is free and everyone is welcome.", date: "10/05/2025", date: "", state: 0 },
 			]
 		}
 	]

@@ -5,7 +5,7 @@
 </footer>
 <style lang="scss">
 footer {
-    background-color: #ccc;
+    background: linear-gradient(to top, rgba(0,0,0,0.4), rgba(0, 0, 0, 0));
     color: white;
 
     .footer-text {

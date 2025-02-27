@@ -4,7 +4,11 @@
   	import { dndzone } from 'svelte-dnd-action';
 	import Card from "./Card.svelte";
 	import Dialog from './Board/Dialog.svelte'
+	import { getContext } from 'svelte';
 	
+	const isOpenDialog = getContext('isOpenDialog');
+	const emptyColumnSectence = getContext('emptyColumnSectence')
+
 	const flipDurationMs = 150;
 	
 	export let name;
@@ -47,9 +51,19 @@
 		inputText = '';
 	}
 
-	$: filteredItems = searchText.trim() === "" 
-		? items
-		: items.filter(item => item.name.toLowerCase().includes(searchText.toLowerCase()));
+	let filteredItems
+
+	$: {
+		if (searchText.trim() === "")  {
+			emptyColumnSectence.update(() => "Don't have any card yet")
+
+			filteredItems = items
+		} else {
+			emptyColumnSectence.update(() => "No result")
+
+			filteredItems = items.filter(item => item.name.toLowerCase().includes(searchText.toLowerCase()));
+		}
+	}
 		
 	function randomColorBetween(color1, color2) {
 		const hexToRgb = hex => ({
@@ -85,15 +99,27 @@
 		<button class="add-card-btn" on:click={dialogRef.openDialog}>＋ Add Card</button>
 	</div>
 	<div class="column-content" 
-		use:dndzone={{items, flipDurationMs}}
+		use:dndzone={{
+			items, 
+			flipDurationMs, 
+			dragDisabled: $isOpenDialog,
+			dropTargetStyle: {
+                outline: '2px dashed green', 
+                borderRadius: '0.5rem',
+            },
+		}}
 		on:consider={handleDndConsiderCards} 
 		on:finalize={handleDndFinalizeCards}
 	>
-		{#each filteredItems as item (item.id)}
-			<div class="drag-area" animate:flip="{{duration: flipDurationMs}}" >
-				<Card name={item.name} />
-			</div>
-		{/each}
+		{#if filteredItems.length > 0}
+			{#each filteredItems as item (item.id)}
+				<div class="drag-area" animate:flip="{{duration: flipDurationMs}}" >
+					<Card event={item} />
+				</div>
+			{/each}
+		{:else}
+			<p class="empty-column">{$emptyColumnSectence}</p>
+		{/if}
     </div>
 </div>
 <Dialog 
@@ -112,8 +138,11 @@
 		padding: 0.5em;
 		margin: 1rem;
 		float: left;
-		border: 1px solid #333333;
 		border-radius: 0.5rem;
+		background-color: rgba(0,0,0,0.2) !important;
+		box-shadow:
+			0 2px 4px rgba(0,0,0,0.2),
+			0 8px 16px rgba(0,0,0,0.4);
 
 		.column-title {
 			height: 2.5em;
@@ -123,9 +152,10 @@
 			align-items: center;
 			padding-left: .5rem;
 			padding-right: .5rem;
+			color: white;
 
 			.add-card-btn {
-				background-color: #F77F00;
+				background-color: var(--primary-color);
 				color: white;
 				border: none;
 				padding: 5px 10px;
@@ -134,15 +164,19 @@
 				font-size: 0.8em;
 
 				&:hover {
-					background-color: #DB7100;
+					background-color: var(--hover-primary-color);
 				}
 			}
 		}
 
 		.column-content {
 			height: calc(100% - 2.5em);
-			/* Notice that the scroll container needs to be the dndzone if you want dragging near the edge to trigger scrolling */
 			overflow-y: scroll;
+
+			.empty-column {
+				text-align: center;
+				color: white;
+			}
 
 			.drag-area {
 				display: flex;

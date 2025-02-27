@@ -1,4 +1,7 @@
 <script>
+    import { getContext } from 'svelte';
+    const isOpenDialog = getContext('isOpenDialog')
+
     export let title;
     export let placeholder;
     export let onSubmit;
@@ -12,10 +15,12 @@
     }
 
     export function openDialog() {
+        isOpenDialog.update(() => true)
         dialogRef.showModal()
     }
 
     function closeDialog() {
+        isOpenDialog.update(() => false)
         inputText = '';
         dialogRef.close()
     }
@@ -33,7 +38,7 @@ dialog {
     border: none;
     border-radius: 8px;
     padding: 1.5rem 1.5rem 1rem 1.5rem;
-    background-color: #fdf9f6;
+    background-color: var(--dialog-bg-color);
     box-shadow: 0 5px 15px black;
     position: fixed;
     top: 50%;
@@ -41,8 +46,13 @@ dialog {
     transform: translate(-50%, -50%);
     margin: 0 !important;
 
+    @media (max-width: 768px){
+		width: 70%;
+	}
+
     h2 {
         margin: 0;
+        text-align: center;
     }
 
     .btn_area {
@@ -50,14 +60,14 @@ dialog {
         justify-content: space-between;
 
         .cancel-btn {
-            background-color: #ccc;
+            background-color: var(--cancel-color);
             color: black;
             border-radius: 0.5rem;
         }
 
         .confirm-btn {
             color: white;
-            background-color: #F77F00;
+            background-color: var(--primary-color);
             border-radius: 0.5rem;
         }
     }
