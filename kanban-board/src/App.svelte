@@ -44,8 +44,8 @@
 				merged = {...merged, ...base, ...NightParam}
 			break;
 		}
-		console.log(merged)
-        vantaEffect = CLOUDS(merged);
+
+		vantaEffect = CLOUDS(merged);
 		merged = {};
 	}
 	
