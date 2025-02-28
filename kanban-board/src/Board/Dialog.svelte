@@ -40,11 +40,8 @@ dialog {
     padding: 1.5rem 1.5rem 1rem 1.5rem;
     background-color: var(--dialog-bg-color);
     box-shadow: 0 5px 15px black;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin: 0 !important;
+    justify-self: center;
+    align-self: center;
 
     @media (max-width: 768px){
 		width: 70%;

@@ -1,15 +1,18 @@
 <script>
 	import { getContext } from 'svelte';
 	import Dialog from './Board/Dialog.svelte'
+    import MemberDialog from './Board/MemberDialog.svelte';
 
     const isOpenDialog = getContext('isOpenDialog')
 	
 	export let event;
 
 	let dialog;
+	let tagDialogRef;
+	let memberDialogRef;
 	let tempEvent = {};
 	let tempTags = event.tags;
-	let tagDialogRef;
+	let tempMembers = event.members;
 
 	function formatDateToInput(dateString) {
 		if (!dateString) return "";
@@ -45,8 +48,8 @@
 	function saveChanges() {
 		tempEvent.date = formatDateToData(tempEvent.date); 
 		tempEvent.tags = tempTags;
+		tempEvent.members = tempMembers;
 		event = { ...tempEvent }; 
-		console.log(event);
 		dialog.close();
 	}
 
@@ -56,6 +59,10 @@
 
 	function removeTag(targetTag) {
 		tempTags = tempTags.filter(tag => tag !== targetTag);
+	}
+
+	function updateMembers(members) {
+		tempMembers = members;
 	}
 </script>
 
@@ -97,17 +104,17 @@
 				<div class="tag-area">
 					<span class="editable-tag">
 						Phil
-						<div class="delete-tag">
+						<button class="delete-tag">
 							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M6.4 19L5 17.6L10.6 12L5 6.4L6.4 5L12 10.6L17.6 5L19 6.4L13.4 12L19 17.6L17.6 19L12 13.4L6.4 19Z" fill="white"/>
 							</svg>
-						</div>
+						</button>
 					</span>
-					<span class="tag insert-tag">
+					<button class="tag insert-tag" on:click={memberDialogRef.open()}>
 						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M18 12.998H13V17.998C13 18.2633 12.8946 18.5176 12.7071 18.7052C12.5196 18.8927 12.2652 18.998 12 18.998C11.7348 18.998 11.4804 18.8927 11.2929 18.7052C11.1054 18.5176 11 18.2633 11 17.998V12.998H6C5.73478 12.998 5.48043 12.8927 5.29289 12.7052C5.10536 12.5176 5 12.2633 5 11.998C5 11.7328 5.10536 11.4785 5.29289 11.2909C5.48043 11.1034 5.73478 10.998 6 10.998H11V5.99805C11 5.73283 11.1054 5.47848 11.2929 5.29094C11.4804 5.1034 11.7348 4.99805 12 4.99805C12.2652 4.99805 12.5196 5.1034 12.7071 5.29094C12.8946 5.47848 13 5.73283 13 5.99805V10.998H18C18.2652 10.998 18.5196 11.1034 18.7071 11.2909C18.8946 11.4785 19 11.7328 19 11.998C19 12.2633 18.8946 12.5176 18.7071 12.7052C18.5196 12.8927 18.2652 12.998 18 12.998Z" fill="white"/>
 						</svg>
-					</span>
+					</button>
 				</div>
 			</div>
 
@@ -138,6 +145,7 @@
 		</div>
 	</div>
 </dialog>
+<MemberDialog bind:this={memberDialogRef} members={tempMembers} updateMembers={updateMembers} />
 <Dialog 
 	bind:this={tagDialogRef}
 	title="New Tag"
@@ -158,6 +166,7 @@
 	border: 1px solid #333333;
 	border-radius: .5rem;
 	gap: 0.7rem;
+	text-align: start;
 
 	&.no-tag {
 		gap: 0;
@@ -173,13 +182,10 @@ dialog {
     border-radius: 8px;
     padding: 1.5rem 1.5rem 1rem 1.5rem;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    position: fixed;
-    top: 50%;
-    left: 50%;
+	/* justify-self: center;
+	align-self: center; */
 	width: 50%;
 	max-width: 600px;
-    transform: translate(-50%, -50%);
-	margin: 0;
 	background-color: var(--dialog-bg-color);
 
 	@media (max-width: 768px){
@@ -261,6 +267,13 @@ dialog {
 				}
 			}
 		}
+	}
+}
+
+.drag-area {
+	.tag {
+		background-color: bisque;
+		padding: 0.25rem 1rem;
 	}
 }
 

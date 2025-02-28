@@ -45,7 +45,8 @@
 	
 	function addCard(inputText) {
 		if (!inputText.trim()) return;
-		const newCard = {id: Date.now(), name: inputText};
+		const newCard = {id: Date.now(), name: inputText, tags: []};
+		console.log(items);
 		items = [newCard, ...items];
 		onDrop(items);
 		inputText = '';
@@ -102,6 +103,7 @@
 		use:dndzone={{
 			items, 
 			flipDurationMs, 
+			type: 'card',
 			dragDisabled: $isOpenDialog,
 			dropTargetStyle: {
                 outline: '2px dashed green', 
