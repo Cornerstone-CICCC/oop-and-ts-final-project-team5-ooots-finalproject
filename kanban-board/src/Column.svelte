@@ -45,7 +45,7 @@
 	
 	function addCard(inputText) {
 		if (!inputText.trim()) return;
-		const newCard = {id: Date.now(), name: inputText};
+		const newCard = {id: Date.now(), name: inputText, tags: []};
 		items = [newCard, ...items];
 		onDrop(items);
 		inputText = '';

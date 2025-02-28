@@ -1,5 +1,6 @@
 <script>
     import { dndzone } from 'svelte-dnd-action';
+    import { flip } from 'svelte/animate';
 	import Column from "./Column.svelte";
     import Dialog from './Board/Dialog.svelte'
     import { setContext } from 'svelte';
@@ -75,7 +76,7 @@
             on:finalize={handleDndFinalizeColumns}
         >
             {#each columns as {id, name,items}, idx (id)}
-                <div class="column">
+                <div class="column"  animate:flip="{{duration: flipDurationMs}}">
                     <Column 
                         name={name} 
                         items={items} 
